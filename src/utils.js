@@ -25,27 +25,30 @@ export default {
         return Math.round(num1*m+num2*m)/m;
     },
     //小数乘法
-    multiplyFloat: function (arg1, arg2) {
-        var m=0,s1=arg1.toString(),s2=arg2.toString();
+    multiplyFloat: function (num1, num2) {
+        var m=0,s1=num1.toString(),s2=num2.toString();
         try{m+=s1.split(".")[1].length}catch(e){}
         try{m+=s2.split(".")[1].length}catch(e){}
         return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m)
     },
     //格式化日期
     /**
-     * time 需要转换的时间
+     * time 一个日期或者时间戳(number)
      * type 需要转换时间的格式
      *      hms 返回 h:m:s
      *      ymd 返回 y-m-d
      *      其他或者不传为：y-m-d h:m:s
-     * custom 自定义返回时间格式，需要传入一个数组，
-     *      长度不为2，并且同时为空字符串时，返回 y + "-" + m + "-" + d + " " + h + ":" + M + ":" + s并有alert提示
-     *      [0]值为""时，[1]有值时返回hms 用[1]传入的符号隔开
-     *      [0]有值，[1]值为""时，返回ymd 用[0]传入的符号隔开
-     *      都有值时，返回 y + [0] + m + [0] + d + " " + h + [1] + M + [1] + s;
+     * customFormat 自定义返回时间格式
+     *      例 y-m-d h:M:s、 yy/m/d、h:M:s、m/d h:M:s
+     *      y:年，yy:年后两位，m:月，d:日，h:时，M:分，s: 秒
+     *
      * */
-    formatTime: function(time, type, custom){
-        let date = new Date(parseInt(time));
+    formatTime: function(time, type, customFormat){
+        let date = new Date(time);
+        if(date == "Invalid Date"){
+            alert("日期格式错误");
+            return
+        }
         let dataStr = "";
         let y = date.getFullYear().toString(),
             m = date.getMonth() < 9 ? "0" + (date.getMonth()  + 1) : date.getMonth() + 1,
@@ -54,18 +57,15 @@ export default {
             M = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
             s = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
         dataStr = y + "-" + m + "-" + d + " " + h + ":" + M + ":" + s;
-        if(custom){
-            if(custom.length == 2 && (custom[0] != "" || custom[1] != "")){
-                if(custom[0] == ""){
-                    dataStr = h + custom[1] + M + custom[0] + s;
-                }else if(custom[1] == "") {
-                    dataStr = y + custom[0] + m + custom[0] + d;
-                }else{
-                    dataStr = y + custom[0] + m + custom[0] + d + " " + h + custom[1] + M + custom[1] + s;
-                }
-            }else{
-                alert("自定义传入错误！");
-            }
+        if(customFormat){
+          customFormat = customFormat.replace(/yy/g, y.substring(2));
+          customFormat = customFormat.replace(/y/g, y);
+          customFormat = customFormat.replace(/m/g, m);
+          customFormat = customFormat.replace(/d/g, d);
+          customFormat = customFormat.replace(/h/g, h);
+          customFormat = customFormat.replace(/M/g, M);
+          customFormat = customFormat.replace(/s/g, s);
+          return customFormat;
         }else{
             if(type == "hms"){
                 dataStr = h + ":" + M + ":" + s;
@@ -74,7 +74,6 @@ export default {
             }
         }
         return dataStr;
-
     },
     //复制文本
     /**

@@ -1,5 +1,11 @@
 <template>
   <div class="home">
+    <input type="text" v-model="msg1">
+    <input type="text" v-model="msg2">
+    <input type="text" v-model="msg3">
+    <div class="div-btn">
+      <button class="btn btn-default" @click="formatDate">执行</button>
+    </div>
   </div>
 </template>
 
@@ -7,9 +13,27 @@
 // @ is an alias to /src
 
   export default {
-      name: 'home',
-      mounted: function () {
-          console.log(this.utils.addFloat(0.1, 0.2))
+    name: 'home',
+    data: function(){
+      return {
+        msg1: new Date().getTime(),
+        msg2: "",
+        msg3: "",
       }
+    },
+    mounted: function () {
+    },
+    methods:{
+      formatDate: function(){
+        console.log(this.utils.formatTime(this.msg1, this.msg2, this.msg3));
+      }
+    }
+
   }
 </script>
+
+<style lang="less" scoped>
+  .div-btn{
+    margin: 20px;
+  }
+</style>
