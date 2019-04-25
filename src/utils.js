@@ -91,5 +91,63 @@ export default {
         else {
             return "复制成功";
         }
-    }
+    },
+
+    //判断是否为数字
+    isRealNum: function (val){
+        if(val === "" || val == null){
+            return false;
+        }
+        if(!isNaN(val)){
+            return true;
+        }else{
+            return false;
+        }
+    },
+    //格式化科学计数法的数字
+    formatNum: function(num){
+        var m = num.toExponential().match(/\d(?:\.(\d*))?e([+-]\d+)/);
+        return num.toFixed(Math.max(0, (m[1] || '').length - m[2]));
+    },
+    //查询第一个非0数字的位置,后保留五位
+    getFZeroWz: function(num){
+        //12.123
+        if(num == 0){
+            return 0;
+        }
+        let result = 0;
+        let numS = num + "";
+        if (numS.indexOf('-') >= 0) {
+            numS = '0' + String(Number(numS) + 1).substr(1);
+        }
+        let len = 5;
+        let x = numS.match(/[1-9]/);
+        if(x){
+            let i = x.index;
+            let y = numS.indexOf(".");
+            if(y == -1){
+                result = 0;
+            }else{
+                if(i > y){
+                    result = i + len - 2;
+                }else{
+                    result = len - y > 0 ? len - y : 0;
+                }
+            }
+            if(num < 0){
+                result++;
+            }
+        }
+        return result;
+    },
+    //数字转汉字数字
+    numToCHS: function(num){
+        let n = parseFloat(num);
+        let arr = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+        if(n > 10){
+            return n;
+        }else{
+            return arr[n];
+        }
+    },
 }

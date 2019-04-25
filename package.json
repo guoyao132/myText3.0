@@ -9,10 +9,17 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
+    "eosjs": "^16.0.9",
+    "highlight.js": "^9.13.1",
     "iview": "^3.1.5",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "scatterjs-core": "^2.7.16",
+    "scatterjs-plugin-eosjs": "^1.5.1",
     "vue": "^2.5.17",
+    "vue-codemirror": "^4.0.6",
+    "vue-highlight": "0.0.0",
+    "vue-highlight.js": "^3.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

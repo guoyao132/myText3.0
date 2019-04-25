@@ -6,6 +6,10 @@
     <div class="div-btn">
       <button class="btn btn-default" @click="formatDate">执行</button>
     </div>
+    <div class="con">sadasds1da31d2as</div>
+    <Button>
+      <router-link to="/">changeColor</router-link>
+    </Button>
   </div>
 </template>
 
@@ -35,5 +39,13 @@
 <style lang="less" scoped>
   .div-btn{
     margin: 20px;
+  }
+  .con{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    line-height: 100px;
+    text-align: center;
+    font-size: 20px;
   }
 </style>
