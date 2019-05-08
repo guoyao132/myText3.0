@@ -7,16 +7,16 @@ import Higelight from './views/Higelight'
 import Codemirror from './views/Codemirror'
 import ChangeColor from './views/ChangeColor'
 import Scatter from './views/Scatter'
-import router from '../../wk-webserver-front/src/router'
+import CssAnimate from './views/CssAnimate'
 
 Vue.use(Router)
 
-cosnt router = new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
       name: 'default',
-      component: Scatter
+      component: CssAnimate
     },
     {
       path: '/home',
@@ -53,11 +53,17 @@ cosnt router = new Router({
       name: 'Scatter',
       component: Scatter
     },
+    {
+      path: '/cssanimate',
+      name: 'CssAnimate',
+      component: CssAnimate
+    },
   ]
 })
 
 /*路由跳转判断需要登录----meta.requiresAuth为true则需要登录才能进入*/
 router.beforeEach(function (to,from,next) {
+  next();
   // if ((to.path === "/login" || to.path === "/regsiter") && window.sessionStorage.getItem('islogin') == 'true') {
   //   next(false);
   //   return;
