@@ -17,13 +17,24 @@ import python from 'highlight.js/lib/languages/python'
 
 import { codemirror } from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
+import AMap from "vue-amap"
 
 import App from './App.vue'
 Vue.config.productionTip = false;
 Vue.prototype.utils = utils;
 Vue.prototype.axios = Axios;
 Vue.use(Bootstrap);
-Vue.use(iview)
+Vue.use(iview);
+Vue.use(AMap);
+// 初始化vue-amap
+AMap.initAMapApiLoader({
+  // 高德的key
+  key: 'YOUR_KEY',
+  // 插件集合
+  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
+  // 高德 sdk 版本，默认为 1.4.4
+  v: '1.4.4'
+});
 Vue.use(VueHighlightJS, {
   // Register only languages that you want
   languages: {

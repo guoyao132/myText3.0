@@ -56,7 +56,6 @@ export default {
             h = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
             M = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
             s = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-        dataStr = y + "-" + m + "-" + d + " " + h + ":" + M + ":" + s;
         if(customFormat){
           customFormat = customFormat.replace(/yy/g, y.substring(2));
           customFormat = customFormat.replace(/y/g, y);
@@ -73,6 +72,7 @@ export default {
                 dataStr = y + "-" + m + "-" + d;
             }
         }
+        dataStr = y + "-" + m + "-" + d + " " + h + ":" + M + ":" + s;
         return dataStr;
     },
     //复制文本

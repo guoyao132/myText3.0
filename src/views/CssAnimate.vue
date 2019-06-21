@@ -141,7 +141,7 @@
     .circle-div-con.active{
       transform: rotate(180deg);
       .circle-div{
-        background-color: #000;;
+        background-color: #000;
       }
       .circle-div:before{
         transform: rotate(45deg);

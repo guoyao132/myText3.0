@@ -1,13 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Block from './views/Block'
-import Iview from './views/Iview'
-import Higelight from './views/Higelight'
-import Codemirror from './views/Codemirror'
-import ChangeColor from './views/ChangeColor'
-import Scatter from './views/Scatter'
-import CssAnimate from './views/CssAnimate'
 
 Vue.use(Router)
 
@@ -16,52 +8,101 @@ const router = new Router({
     {
       path: '/',
       name: 'default',
-      component: CssAnimate
+      component: resolve => require(['@/views/Login.vue'], resolve)
     },
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: resolve => require(['@/views/Home.vue'], resolve)
     },
     {
       path: '/block',
       name: 'Block',
-      component: Block
+      component: resolve => require(['@/views/Block'], resolve)
     },
     {
       path: '/iview',
       name: 'Iview',
-      component: Iview
+      component: resolve => require(['@/views/Iview'], resolve)
     },
     {
       path: '/higelight',
       name: 'Higelight',
-      component: Higelight
+      component: resolve => require(['@/views/Higelight'], resolve)
     },
     {
       path: '/codemirror',
       name: 'Codemirror',
-      component: Codemirror
+      component: resolve => require(['@/views/Codemirror'], resolve)
     },
     {
       path: '/changeColor',
       name: 'ChangeColor',
-      component: ChangeColor
+      component: resolve => require(['@/views/ChangeColor'], resolve)
     },
     {
       path: '/scatter',
       name: 'Scatter',
-      component: Scatter
+      component: resolve => require(['@/views/Scatter'], resolve)
     },
     {
       path: '/cssanimate',
       name: 'CssAnimate',
-      component: CssAnimate
+      component: resolve => require(['@/views/CssAnimate'], resolve)
+    },
+    {
+      path: '/amap',
+      name: 'AMap',
+      component: resolve => require(['@/views/AMap'], resolve)
+    },
+    {
+      path: '/children',
+      name: 'Children',
+      component: resolve => require(['@/views/Children'], resolve),
+      children: [
+        {
+          path: 'child1',
+          name: 'Child1',
+          component: resolve => require(['@/components/Child1'], resolve),
+          redirect: {name: 'GrandChild1'},
+          children: [
+            {
+              path: 'grandchild1',
+              name: 'GrandChild1',
+              component: resolve => require(['@/components/GrandChild1'], resolve)
+            },
+            {
+              path: 'grandchild2',
+              name: 'GrandChild2',
+              component: resolve => require(['@/components/GrandChild2'], resolve)
+            },
+          ]
+        },
+        {
+          path: 'chlidl2',
+          name: 'Chlidl2',
+          component: resolve => require(['@/components/Chlidl2'], resolve),
+          redirect: {name: 'GrandChild3'},
+          children: [
+            {
+              path: 'grandchild3',
+              name: 'GrandChild3',
+              component: resolve => require(['@/components/GrandChild3'], resolve)
+            },
+            {
+              path: 'grandchild4',
+              name: 'GrandChild4',
+              component: resolve => require(['@/components/GrandChild4'], resolve)
+            },
+          ]
+        },
+      ],
+      redirect: "/children/child1"
     },
   ]
 })
 
-/*路由跳转判断需要登录----meta.requiresAuth为true则需要登录才能进入*/
+//路由跳转判断需要登录----meta.requiresAuth为true则需要登录才能进入
 router.beforeEach(function (to,from,next) {
   next();
   // if ((to.path === "/login" || to.path === "/regsiter") && window.sessionStorage.getItem('islogin') == 'true') {
