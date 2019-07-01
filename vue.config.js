@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: './',
+  publicPath: './',
   filenameHashing: false,
   productionSourceMap: false,
   devServer: {

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import home from "./views/Home"
 
 Vue.use(Router)
 
@@ -8,12 +9,12 @@ const router = new Router({
     {
       path: '/',
       name: 'default',
-      component: resolve => require(['@/views/Login.vue'], resolve)
+      component: home
     },
     {
       path: '/home',
       name: 'home',
-      component: resolve => require(['@/views/Home.vue'], resolve)
+      component: home
     },
     {
       path: '/block',
@@ -54,6 +55,11 @@ const router = new Router({
       path: '/amap',
       name: 'AMap',
       component: resolve => require(['@/views/AMap'], resolve)
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: resolve => require(['@/views/Login'], resolve)
     },
     {
       path: '/children',
