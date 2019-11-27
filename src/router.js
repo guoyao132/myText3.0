@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import defaultVue from "./views/ThreeeDemo"
 import home from "./views/Home"
 
 Vue.use(Router)
@@ -9,12 +10,37 @@ const router = new Router({
     {
       path: '/',
       name: 'default',
-      component: home
+      component: defaultVue
     },
     {
       path: '/home',
       name: 'home',
       component: home
+    },
+    {
+      path: '/ol',
+      name: 'ol',
+      component: resolve => require(['@/views/Ol'], resolve)
+    },
+    {
+      path: '/threeedemo',
+      name: 'threeedemo',
+      component: resolve => require(['@/views/ThreeeDemo'], resolve)
+    },
+    {
+      path: '/myxdhmap',
+      name: 'myxdhmap',
+      component: resolve => require(['@/views/MyXdhMap'], resolve)
+    },
+    {
+      path: '/myxdhmap2',
+      name: 'myxdhmap2',
+      component: resolve => require(['@/views/MyXdhMap2'], resolve)
+    },
+    {
+      path: '/maindiv',
+      name: 'maindiv',
+      component: resolve => require(['@/views/MainDiv'], resolve)
     },
     {
       path: '/block',

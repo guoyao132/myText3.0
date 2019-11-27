@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>人员</title>
+    <desc>Created with Sketch.</desc>
+    <g id="人员" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M49,32 L56.56,34.0539244 L70,76.8300385 L49,96 L28,76.8300385 L41.44,34.0539244 L49,32 Z" id="路径-3" stroke="#1AE5B8" stroke-width="5" fill-rule="nonzero"></path>
+        <circle id="椭圆形" stroke="#1AE5B8" stroke-width="6" cx="49" cy="18" r="15"></circle>
+    </g>
+</svg>
