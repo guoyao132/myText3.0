@@ -22,6 +22,10 @@ import AMap from "vue-amap"
 // let Base64 = require('js-base64').Base64;
 import {Base64} from "js-base64"
 
+import demo from "gy_demo";
+
+Vue.use(demo)
+
 import App from './App.vue'
 Vue.config.productionTip = false;
 Vue.prototype.utils = utils;

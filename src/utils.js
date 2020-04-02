@@ -150,4 +150,12 @@ export default {
             return arr[n];
         }
     },
+    //获取上标或者下标数组
+    getSmallNum(num, type){
+        if(type){
+            return 'º¹²³⁴⁵⁶⁷⁸⁹'.substring(num, num + 1);
+        }else{
+            return '₀₁₂₃₄₅₆₇₈₉'.substring(num, num + 1);
+        }
+    },
 }
